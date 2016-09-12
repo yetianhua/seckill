@@ -2,22 +2,23 @@ package org.seckill.dao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.Seckill;
 
 public interface SeckillDao {
 	/**
-	 * ¼õ¿â´æ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param seckillId
 	 * @param killTime
-	 * @return Èç¹ûÓ°ÏìĞĞÊı=1£¬±íÊ¾¸üĞÂµÄ¼ÇÂ¼ĞĞÊı
+	 * @return ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=1ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ÂµÄ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 	 */
 	int reduceNumber(@Param("seckillId") long seckillId, @Param("killTime") Date killTime);
 
 	/**
-	 * ¸ù¾İid²éÑ¯ÃëÉ±¶ÔÏó
+	 * ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param seckillId
 	 * @return
@@ -25,12 +26,19 @@ public interface SeckillDao {
 	Seckill queryById(long seckillId);
 
 	/**
-	 * ¸ù¾İÆ«ÒÆÁ¿²éÑ¯ÃëÉ±ÉÌÆ·ÁĞ±í
+	 * ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½É±ï¿½ï¿½Æ·ï¿½Ğ±ï¿½
 	 * 
 	 * @param offest
 	 * @param limit
 	 * @return
 	 */
-	// javaÃ»ÓĞ±£´æĞÎ²ÎµÄ¼ÇÂ¼£ºqueryAll(int offset,int limit) -> queryAll(arg0,arg1)
+	// javaÃ»ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½Î²ÎµÄ¼ï¿½Â¼ï¿½ï¿½queryAll(int offset,int limit) -> queryAll(arg0,arg1)
 	List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+	
+	/**
+	 * è°ƒç”¨å­˜å‚¨è¿‡ç¨‹æ‰§è¡Œç§’æ€
+	 * @param param
+	 */
+	//ç”±äºæ˜¯å­˜å‚¨è¿‡ç¨‹æ‰€ä»¥è¿”å›ä¸ºvoidï¼Œä¸”å› ä¸ºå­˜å‚¨è¿‡ç¨‹çš„å‚æ•°å¯èƒ½æ˜¯inæˆ–è€…outï¼Œæ‰€ä»¥ä½¿ç”¨Mapæ¥å­˜å‚æ•°
+	void killByProceduce(Map<String,Object> param);
 }
